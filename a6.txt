@@ -63,12 +63,8 @@ grep -iFf replied_to_them.txt temporary.txt | awk '{print $1}' | sort | uniq -c|
 
 #Q5 Which words are the most frequent in that tweet text?
 
-cat temporary.txt | cut -f3 | sed 
--e 's/\(,\|\.\|;\)//g' 
--e 's/\<\(and\|or\|if\|in\|it\)\>//gi' 
--e 's/<[^>]*>//g' 
--e 's/  / /gi' |
-tr -c '[:alnum:]' '[\n*]' | sort | uniq -c | sort -nr | head -1
+cut -f14 temporary.txt| head -n 100|  tr -c '[:alnum:]' '[\n*]' | sed "s/ /\n/g" | sort | uniq -c | sort -nr| head -n 10 >> temp2.txt 
+cut -f14 temp2.txt | head -n 100|  |tr -c '[:alnum:]' '[\n*]' | sed "s/ /\n/g" | sort | uniq -c | sort -nr| head -n 10
 
 #Output
    6234 the
