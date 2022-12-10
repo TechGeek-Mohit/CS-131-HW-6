@@ -57,5 +57,7 @@
  1067  grep iFf replied_to_them.txt temporary.txt | awk '{print $3}' | sort | uniq -c| sort -nr -k 1| head
  1068  grep -iFf replied_to_them.txt temporary.txt | awk '{print $3}' | sort | uniq -c| sort -nr -k 1| head
  1069  grep -iFf replied_to_them.txt temporary.txt | awk '{print $1}' | sort | uniq -c| sort -nr -k 1| head
- 1070   cat temp | cut -f3 | sed -e 's/\(,\|\.\|;\)//g' -e 's/\<\(and\|or\|if\|in\|it\)\>//gi' -e 's/<[^>]*>//g' -e 's/  / /gi' | tr -c '[:alnum:]' '[\n*]' | sort | uniq -c | sort -nr | head -11
- 1071   cat temporary.txt | cut -f3 | sed -e 's/\(,\|\.\|;\)//g' -e 's/\<\(and\|or\|if\|in\|it\)\>//gi' -e 's/<[^>]*>//g' -e 's/  / /gi' | tr -c '[:alnum:]' '[\n*]' | sort | uniq -c | sort -nr | head -1
+ 1070  [^>]*>//g' -e 's/  / /gi' | tr -c '[:alnum:]' '[\n*]' | sort | uniq -c | sort -nr | head -1
+ 1071 cut -f14 temporary.txt| head -n 100|  tr -c '[:alnum:]' '[\n*]' | sed "s/ /\n/g" | sort | uniq -c | sort -nr| head -n 10 >> temp2.txt 
+ 1072  cut -f14 temp2.txt | head -n 100|  |tr -c '[:alnum:]' '[\n*]' | sed "s/ /\n/g" | sort | uniq -c | sort -nr| head -n 10
+
